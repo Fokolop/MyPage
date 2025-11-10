@@ -25,6 +25,16 @@
         /* Basic styles to prevent flash of unstyled content */
         body {
             font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .main-content {
+            padding: 80px 20px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
     <link rel="stylesheet" href="style.css">
@@ -57,7 +67,7 @@
                 <div class="card-container">
                     <div class="profile-section">
                         <div class="avatar">
-                            <img src="https://i.ytimg.com/vi/jg8ixdQzrjc/maxresdefault.jpg" alt="Гераськина С.Д." onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2YwZjBmMCIvPjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2NjciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7Ql9C90LDRgTwvdGV4dD48L3N2Zz4='">
+                            <img src="https://i.ytimg.com/vi/jg8ixdQzrjc/maxresdefault.jpg" alt="Гераськина С.Д.">
                         </div>
                         <h1 class="name">Гераськина С.Д.</h1>
                         <p class="title">Студент</p>
@@ -121,7 +131,7 @@
                 <div class="about-container">
                     <div class="about-profile">
                         <div class="avatar large">
-                            <img src="https://i.ytimg.com/vi/jg8ixdQzrjc/maxresdefault.jpg" alt="Гераськина С.Д." onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2YwZjBmMCIvPjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2NjciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7Ql9C90LDRgTwvdGV4dD48L3N2Zz4='">
+                            <img src="https://i.ytimg.com/vi/jg8ixdQzrjc/maxresdefault.jpg" alt="Гераськина С.Д.">
                         </div>
                         <div class="profile-info">
                             <h2>Гераськина София Дмитриевна</h2>
@@ -197,14 +207,86 @@
         </div>
     </section>
 
-    <!-- Остальные секции (education, skills, contact) остаются без изменений -->
-    <!-- Для экономии места покажу только изменения в структуре -->
-
     <!-- Секция "Образование" -->
     <section id="education" class="section">
         <div class="main-content">
             <div class="page-content">
-                <!-- Содержимое education -->
+                <h1 class="page-title">Образование</h1>
+
+                <div class="education-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>🎓 Сергиево-Посадский колледж</h3>
+                            <p class="date">2022 - настоящее время</p>
+                            <p><strong>Специальность:</strong> Информационные системы и программирование</p>
+                            <p><strong>Статус:</strong> Студент 3 курса</p>
+                            <p><strong>Средний балл:</strong> 4.8</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>🏫 Средняя общеобразовательная школа №1</h3>
+                            <p class="date">2011 - 2022</p>
+                            <p><strong>Местоположение:</strong> Сергиев Посад</p>
+                            <p><strong>Аттестат:</strong> С отличием</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="additional-education">
+                    <h2>Дополнительное образование</h2>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <i class="fab fa-html5"></i>
+                            <h4>Веб-разработка</h4>
+                            <p>HTML, CSS, JavaScript</p>
+                            <span class="course-year">2023</span>
+                        </div>
+                        
+                        <div class="course-card">
+                            <i class="fab fa-python"></i>
+                            <h4>Python программирование</h4>
+                            <p>Основы Python и алгоритмы</p>
+                            <span class="course-year">2023</span>
+                        </div>
+                        
+                        <div class="course-card">
+                            <i class="fas fa-database"></i>
+                            <h4>Базы данных</h4>
+                            <p>SQL, MySQL, PostgreSQL</p>
+                            <span class="course-year">2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievements">
+                    <h2>Достижения</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Победитель конкурса программирования колледжа (2023)</span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-medal"></i>
+                            <span>Участник олимпиады по информатике</span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-code"></i>
+                            <span>Активный участник IT-хакатонов</span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Волонтер IT-мероприятий в колледже</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -213,7 +295,119 @@
     <section id="skills" class="section">
         <div class="main-content">
             <div class="page-content">
-                <!-- Содержимое skills -->
+                <h1 class="page-title">Мои навыки</h1>
+
+                <div class="skills-categories">
+                    <h2>Технические навыки</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h3>Frontend разработка</h3>
+                            <p>HTML5, CSS3, JavaScript</p>
+                            <div class="skill-level">
+                                <div class="level-bar">
+                                    <div class="level-progress" style="width: 85%"></div>
+                                </div>
+                                <span>85%</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h3>Python</h3>
+                            <p>Основы программирования, алгоритмы</p>
+                            <div class="skill-level">
+                                <div class="level-bar">
+                                    <div class="level-progress" style="width: 75%"></div>
+                                </div>
+                                <span>75%</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>Базы данных</h3>
+                            <p>SQL, MySQL, PostgreSQL</p>
+                            <div class="skill-level">
+                                <div class="level-bar">
+                                    <div class="level-progress" style="width: 70%"></div>
+                                </div>
+                                <span>70%</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <h3>Системы контроля версий</h3>
+                            <p>Git, GitHub</p>
+                            <div class="skill-level">
+                                <div class="level-bar">
+                                    <div class="level-progress" style="width: 80%"></div>
+                                </div>
+                                <span>80%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="soft-skills">
+                    <h2>Гибкие навыки (Soft Skills)</h2>
+                    <div class="soft-skills-grid">
+                        <div class="soft-skill-item">
+                            <i class="fas fa-comments"></i>
+                            <div>
+                                <h4>Коммуникация</h4>
+                                <p>Умение четко выражать мысли и работать в команде</p>
+                            </div>
+                        </div>
+                        
+                        <div class="soft-skill-item">
+                            <i class="fas fa-tasks"></i>
+                            <div>
+                                <h4>Тайм-менеджмент</h4>
+                                <p>Эффективное планирование и организация времени</p>
+                            </div>
+                        </div>
+                        
+                        <div class="soft-skill-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <h4>Решение проблем</h4>
+                                <p>Аналитический подход к решению сложных задач</p>
+                            </div>
+                        </div>
+                        
+                        <div class="soft-skill-item">
+                            <i class="fas fa-book"></i>
+                            <div>
+                                <h4>Обучаемость</h4>
+                                <p>Быстрое освоение новых технологий и инструментов</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="languages">
+                    <h2>Языки</h2>
+                    <div class="languages-list">
+                        <div class="language-item">
+                            <span>Русский</span>
+                            <div class="language-level native">Родной</div>
+                        </div>
+                        <div class="language-item">
+                            <span>Английский</span>
+                            <div class="language-level intermediate">B1 - Средний</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -222,7 +416,98 @@
     <section id="contact" class="section">
         <div class="main-content">
             <div class="page-content">
-                <!-- Содержимое contact -->
+                <h1 class="page-title">Свяжитесь со мной</h1>
+
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h2>Контактная информация</h2>
+                        
+                        <div class="contact-item" onclick="copyToClipboard('geraskina.email@example.com')">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>geraskina.email@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item" onclick="copyToClipboard('+7 (999) 123-45-67')">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Телефон</h4>
+                                <p>+7 (999) 123-45-67</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Адрес</h4>
+                                <p>Сергиев Посад, Россия</p>
+                            </div>
+                        </div>
+
+                        <div class="social-contact">
+                            <h3>Социальные сети</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-telegram"></i>
+                                    <span>Telegram</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>WhatsApp</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-vk"></i>
+                                    <span>ВКонтакте</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                    <span>LinkedIn</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h2>Форма обратной связи</h2>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Имя *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Тема</label>
+                                <input type="text" id="subject" name="subject">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Сообщение *</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="contact-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Отправить сообщение
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="response-time">
+                    <h3>⏱ Время ответа</h3>
+                    <p>Обычно я отвечаю в течение 24 часов. В учебное время ответ может занять до 48 часов.</p>
+                </div>
             </div>
         </div>
     </section>
