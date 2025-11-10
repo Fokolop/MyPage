@@ -1,63 +1,19 @@
 // Основные функции сайта
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Сайт загружен');
     initializeNavigation();
     initializeBackToTop();
     initializeForm();
     initializeAnimations();
+    
+    // Показываем первую секцию при загрузке
+    showSection('home');
 });
 
-// Инициализация навигации
-function initializeNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.querySelector('.nav-menu');
-
-    // Переключение мобильного меню
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-    }
-
-    // Обработка кликов по навигации
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            showSection(targetId);
-            
-            // Закрытие мобильного меню
-            if (navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            }
-        });
-    });
-
-    // Активная навигация при прокрутке
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('.section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === current) {
-                link.classList.add('active');
-            }
-        });
-    });
-}
-
-// Показать секцию
+// Простая функция для показа секций
 function showSection(sectionId) {
+    console.log('Показываем секцию:', sectionId);
+    
     // Скрыть все секции
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => {
@@ -68,36 +24,64 @@ function showSection(sectionId) {
     const targetSection = document.getElementById(sectionId);
     if (targetSection) {
         targetSection.classList.add('active');
-        window.scrollTo({
-            top: targetSection.offsetTop - 80,
-            behavior: 'smooth'
-        });
     }
+
+    // Обновить активную ссылку в навигации
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + sectionId) {
+            link.classList.add('active');
+        }
+    });
+
+    // Прокрутить к верху страницы
+    window.scrollTo(0, 0);
 }
 
-// Прокрутка к секции
-function scrollToSection(sectionId) {
-    showSection(sectionId);
+// Инициализация навигации
+function initializeNavigation() {
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    // Переключение мобильного меню
+    if (navToggle) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Закрытие меню при клике на ссылку
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        });
+    });
 }
 
 // Кнопка "Наверх"
 function initializeBackToTop() {
     const backToTop = document.getElementById('backToTop');
     
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTop.classList.add('show');
-        } else {
-            backToTop.classList.remove('show');
-        }
-    });
-
-    backToTop.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    if (backToTop) {
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
         });
-    });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 }
 
 // Форма обратной связи
@@ -114,8 +98,7 @@ function initializeForm() {
                 message: document.getElementById('message').value
             };
             
-            // Здесь можно добавить отправку данных на сервер
-            console.log('Форма отправлена:', formData);
+            // Имитация отправки формы
             showNotification('Сообщение отправлено! Я свяжусь с вами в ближайшее время.');
             contactForm.reset();
         });
@@ -124,51 +107,44 @@ function initializeForm() {
 
 // Анимации
 function initializeAnimations() {
-    // Анимация появления элементов при загрузке
-    animateOnLoad();
-    
-    // Анимация при скролле
-    animateOnScroll();
-}
-
-function animateOnLoad() {
-    const elements = document.querySelectorAll('.contact-item, .social-link, .contact-btn, .skill-card, .course-card');
-    
-    elements.forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            element.style.transition = 'all 0.5s ease';
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-}
-
-function animateOnScroll() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+    // Простые анимации при загрузке
+    setTimeout(() => {
+        const elements = document.querySelectorAll('.contact-item, .social-link, .contact-btn');
+        elements.forEach((element, index) => {
+            setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, index * 100);
         });
-    }, observerOptions);
+    }, 500);
+}
 
-    // Наблюдаем за элементами, которые должны анимироваться при скролле
-    const animatedElements = document.querySelectorAll('.timeline-item, .quality-item, .achievement-item');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease';
-        observer.observe(el);
-    });
+// Копирование в буфер обмена
+function copyToClipboard(text) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+            showNotification('Скопировано: ' + text);
+        }).catch(err => {
+            console.error('Ошибка копирования: ', err);
+            fallbackCopyToClipboard(text);
+        });
+    } else {
+        fallbackCopyToClipboard(text);
+    }
+}
+
+function fallbackCopyToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+        document.execCommand('copy');
+        showNotification('Скопировано: ' + text);
+    } catch (err) {
+        console.error('Ошибка копирования: ', err);
+    }
+    document.body.removeChild(textArea);
 }
 
 // Всплывающее уведомление
@@ -193,31 +169,20 @@ function showNotification(message) {
     setTimeout(() => notification.style.transform = 'translateX(0)', 100);
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
     }, 3000);
 }
 
-// Копирование контактной информации
-function setupCopyToClipboard() {
-    const contactItems = document.querySelectorAll('.contact-item');
-    
-    contactItems.forEach(item => {
-        item.style.cursor = 'pointer';
-        item.addEventListener('click', function() {
-            const text = this.querySelector('span') ? this.querySelector('span').textContent : 
-                         this.querySelector('p') ? this.querySelector('p').textContent : '';
-            if (text) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showNotification(`Скопировано: ${text}`);
-                });
-            }
+// Обработка ошибок загрузки изображений
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('error', function() {
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2YwZjBmMCIvPjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2NjciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7Ql9C90LDRgTwvdGV4dD48L3N2Zz4=';
         });
     });
-}
-
-// Инициализация при загрузке
-initializeNavigation();
-initializeBackToTop();
-initializeForm();
-initializeAnimations();
-setupCopyToClipboard();
+});
